@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Profit";
+
+}
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <table class="table table-responsive">
+        <tr>
+            <td>Number of Meals</td>
+            <td>Sub Name</td>
+            <td>Sub Size</td>
+            <td>Sub Meal Type</td>
+
+        </tr>
+        @{
+            List<StarSubsSheet5.Models.Sub> list = Session["orders"] as List<StarSubsSheet5.Models.Sub>;
+
+            foreach (var x in list)
+            {
+                <tr>
+                    @{
+                        <td>@x.MealNumber</td>
+                        <td>@x.SubName</td>
+                        <td>@x.Size</td>
+                        <td>@x.Meal</td>
+                    }
+                </tr>
+            }
+
+        }
+
+    </table>
+    @{
+
+        double totalTax = (double)Session["taxes"];
+        double totalProfit = (double)Session["profit"];
+    }
+
+    <div class="text-center">
+        <p>Total profit: @totalTax</p>
+        <p>Total profit: @totalProfit</p>
+    </div>
+</body>
